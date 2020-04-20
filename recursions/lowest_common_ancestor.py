@@ -19,12 +19,12 @@ Compelxity:
 		O(N) for checking every nodes
 	
 	Space: O(N)*2 for two paths
+        O(D) for recursion stack, depth of the tree.
 
 Solution comparison
 - Instead of finding two paths, they are directly finding the actual common ancestor
-- A external variable to check if both reports are found
-- If reports, found, tehn the current manager it the LCM
-
+- A external variable/object to record the number of nodes found.
+- If both nodes found, then the current_manager is the root.
 
 
 
@@ -75,9 +75,7 @@ def getLowestCommonManager(topManager, reportOne, reportTwo):
 			findNode(node, reportOne, reportTwo, path[:])
 			
 	findNode(topManager, reportOne, reportTwo, [])
-	print(paths)
 	
-	i = 0
 	for i in range(min(len(paths[reportOne.name]), len(paths[reportTwo.name]))):
 		if paths[reportOne.name][i] != paths[reportTwo.name][i]:
 			i -= 1
